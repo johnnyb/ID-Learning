@@ -1,0 +1,36 @@
+<h1>Edit Course</h1>
+
+<h2>Basic Information</h2>
+<%= render :partial => "form", :locals => { :course => @course } %>
+
+
+<h2>Lectures</h2>
+<% lectures = @course.lectures.position_order %>
+<p>
+	<%= link_to "Add Lecture", new_course_lecture_path(@course), :class => "button" %>
+</p>
+<% if lectures.empty? %>
+	<p>
+		No lectures have been created.
+	</p>
+<% else %>
+	<ol>
+		<% lectures.each do |lec| %>
+			<li><%= link_to lec.name, [:edit, @course, lec] %></li>
+		<% end %>
+	</ol>
+<% end %>
+
+<h2>Course Resources</h2>
+
+<h2>Tools</h2>
+
+<ul class="action-buttons">
+	<% if @course.published? %>
+		<li><%= link_to "Publish", [:publish, @course], :method => :put, :class => "button" %></li>
+	<% else %>
+		<li><%= link_to "Unpublish", [:unpublish, @course], :method => :put, :class => "button" %></li>
+	<% end %>
+	<li><%= link_to "Delete Course", @course, :method => :delete, :confirm => "Are you sure you want to delete this course?" %></li>
+</ul>
+

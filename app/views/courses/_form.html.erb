@@ -1,0 +1,12 @@
+<%# PARAMETERS - course %>
+<%= form_for course do |f| %>
+	<dl>
+		<dt>Name</dt>
+		<dd><%= f.text_field :name %></dd>
+
+		<dt>Description</dt>
+		<dd><%= f.text_area :description %></dd>
+	</dl>
+
+	<%= submit_tag "Save" %>
+<% end %>

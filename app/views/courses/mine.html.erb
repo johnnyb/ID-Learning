@@ -1,0 +1,18 @@
+<% courses = Course.for_lecturer(current_user).active %>
+<h1>My Courses</h1>
+
+<p>
+	<%= link_to "Create New Course", new_course_path %>
+</p>
+
+<% if courses.empty? %>
+	<p>
+		You have not created any courses
+	</p>
+<% else %>
+	<ul>
+		<% courses.each do |course| %>
+			<li><%= link_to course.name, course %></li>
+		<% end %>
+	</ul>
+<% end %>

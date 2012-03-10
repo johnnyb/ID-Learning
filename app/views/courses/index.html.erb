@@ -1,3 +1,19 @@
-<h1>Course List</h1>
+<% courses = Course.published.name_order.to_a %>
+<h1>Available Courses</h1>
 
-Lorem
+<% if current_user.role_lecturer? %>
+	<%= link_to "My Courses", mine_courses_path, :class => "button" %>
+<% end %>
+
+<% if courses.empty? %>
+	<p>
+		No courses currently available.
+	</p>
+<% else %>
+	<ul>
+		<% courses.each do |course| %>
+			<li><%= link_to course.public_identifier, course %></li>
+		<% end %>
+	</ul>
+<% end %>
+

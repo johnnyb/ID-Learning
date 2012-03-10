@@ -1,9 +1,25 @@
 Idlearning::Application.routes.draw do
-  devise_for :users
+	devise_for :users
 
-  resources :courses
-  resource :account
+	resource :account
 
-  root :to => "home#index"
+	resources :courses do
+		collection do
+			get :mine
+		end
+		member do 
+			put :publish
+			put :unpublish
+		end
 
+		resources :lectures
+	end
+	resources :seminars do
+		collection do
+			get :mine
+			get :enrolled 
+		end
+	end
+
+	root :to => "home#index"
 end
