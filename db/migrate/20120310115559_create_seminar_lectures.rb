@@ -4,6 +4,7 @@ class CreateSeminarLectures < ActiveRecord::Migration
       t.integer :lecture_id
       t.integer :position
       t.boolean :required, :default => true
+      t.text :additional_notes
       t.timestamps
     end
   end
