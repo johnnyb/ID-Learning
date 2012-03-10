@@ -8,7 +8,28 @@
 </head>
 <body>
 
-<%= yield %>
+<header>
+	<h1>ID Learning System</h1>
+
+	<nav>
+		<ul>
+			<li><%= link_to "Courses", courses_path %></li>
+		</ul>
+	</nav>
+</header>
+
+<section id="notifications">
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+</section>
+
+<section id="maincontent">
+	<%= yield %>
+</section>
+
+<footer>
+
+</footer>
 
 </body>
 </html>
