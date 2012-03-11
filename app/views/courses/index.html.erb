@@ -1,7 +1,7 @@
 <% courses = Course.published.name_order.to_a %>
 <h1>Available Courses</h1>
 
-<% if current_user.role_lecturer? %>
+<% if current_user && current_user.role_lecturer? %>
 	<%= link_to "My Courses", mine_courses_path, :class => "button" %>
 <% end %>
 
