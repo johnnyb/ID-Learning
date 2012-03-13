@@ -1,0 +1,30 @@
+<h1>Edit Lecture</h1>
+
+<p>
+	<%= link_to "Return to Course", [:edit, @course] %>
+</p>
+
+<h2>Basic Information</h2>
+
+<%= render :partial => "form", :locals => { :lecture => @lecture } %>
+
+<h2>Lecture Resource Links</h2>
+
+<% links = @lecture.lecture_links.position_order.to_a %>
+<% if links.empty? %>
+	<p>
+		No links have been added.
+	</p>
+<% else %>
+	<ul id="lecturelinks">
+		<% links.each do |lnk| %>
+			<li class="lecture_link" id="lecturelink_<%= lnk.id %>">
+				<%= render :partial => "lecture_links/form", :locals => { :lecture_link => lnk } %>
+			</li>
+		<% end %>
+	</ul>
+<% end %>
+
+<h3>New Link</h3>
+
+<%= render :partial => "lecture_links/form", :locals => { :lecture_link => @lecture.lecture_links.build } %>

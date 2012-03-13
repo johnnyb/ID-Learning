@@ -1,0 +1,36 @@
+<h1>Course: <%= @course.public_identifier %></h1>
+
+<h2>Lecture: <%= @lecture.public_identifier %></h2>
+
+<% if @lecture.editable_by?(current_user) %>
+	<p>
+		<%= link_to "Edit", [:edit, @course, @lecture] %>
+	</p>
+<% end %>
+
+<% unless @lecture.video_url.blank? %>
+	<div class="lecture-video">
+		<%= show_video_by_url(@lecture.video_url) %>
+	</div>
+<% end %>
+
+<% unless @lecture.lecture_notes.blank? %>
+	<div class="lecture-notes">
+		<%= texthtml(@lecture.lecture_notes) %>
+	</div>
+<% end %>
+
+<% links = @lecture.lecture_links.position_order.to_a %>
+<% unless links.empty? %>
+	<div class="lecture-links">
+		<h3>Resources</h3>
+		<ul>
+			<% links.each do |lnk| %>
+				<b><%= link_to(lnk.title, lnk.url, :target => "_blank") %></b><br />
+				<div class="lecture-link-description">
+					<%= texthtml(lnk.description) %>
+				</div>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

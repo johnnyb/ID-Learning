@@ -1,0 +1,15 @@
+<%# PARAMETERS - lecture_link %>
+<%= form_for [lecture_link.lecture.course, lecture_link.lecture, lecture_link] do |f| %>
+	<dl>
+		<dt>Title</dt>
+		<dd><%= f.text_field :title %></dd>
+
+		<dt>URL (MUST begin with http://)</dt>
+		<dd><%= f.text_field :url %></dd>
+
+		<dt>Description</dt>
+		<dd><%= f.text_area :description %></dd>
+	</dl>
+
+	<%= submit_tag "Save" %>
+<% end %>

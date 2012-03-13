@@ -12,7 +12,9 @@ Idlearning::Application.routes.draw do
 			put :unpublish
 		end
 
-		resources :lectures
+		resources :lectures do
+			resources :lecture_links
+		end
 	end
 	resources :seminars do
 		collection do

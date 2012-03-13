@@ -1,5 +1,9 @@
 <h1>Edit Course</h1>
 
+<p>
+	<%= link_to "View Course", @course %>
+</p>
+
 <h2>Basic Information</h2>
 <%= render :partial => "form", :locals => { :course => @course } %>
 

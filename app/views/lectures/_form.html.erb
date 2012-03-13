@@ -1,0 +1,18 @@
+<%# PARAMETERS - lecture %>
+<%= form_for [lecture.course, lecture] do |f| %>
+	<dl>
+		<dt>Course Title</dt>
+		<dd><%= lecture.course.name %></dd>
+
+		<dt>Lecture Title</dt>
+		<dd><%= f.text_field :name %></dd>
+
+		<dt>Lecture Video URL (optional)</dt>
+		<dd><%= f.text_field :video_url %></dd>
+
+		<dt>Lecture Notes</dt>
+		<dd><%= f.text_area :lecture_notes %></dd>
+	</dl>
+
+	<%= submit_tag "Save" %>
+<% end %>
