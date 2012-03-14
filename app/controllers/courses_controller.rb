@@ -23,6 +23,13 @@ class CoursesController < ApplicationController
 		redirect_to mine_courses_path
 	end
 
+	def unpublish
+		@course.published = false
+		@course.save!
+		flash[:notice] = "Course successfully unpublished"
+		redirect_to [:edit, @course]
+	end
+
 	def publish
 		@course.published = true
 		@course.save!

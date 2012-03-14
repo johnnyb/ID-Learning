@@ -2,11 +2,13 @@
 
 <h2>Lecture: <%= @lecture.public_identifier %></h2>
 
-<% if @lecture.editable_by?(current_user) %>
-	<p>
-		<%= link_to "Edit", [:edit, @course, @lecture] %>
-	</p>
-<% end %>
+<div id="toolbox">
+	<% if @lecture.editable_by?(current_user) %>
+		<p>
+			<%= link_to "Edit", [:edit, @course, @lecture] %>
+		</p>
+	<% end %>
+</div>
 
 <% unless @lecture.video_url.blank? %>
 	<div class="lecture-video">

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Idlearning</title>
+  <title>Bio-Learning: A Look into Biology's New Directions</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<header>
-		<h1>ID Learning System</h1>
+		<h1><%= link_to "Bio-Learning", root_path %></h1>
 
 		<nav>
 			<ul>
@@ -26,8 +26,12 @@
 
 	<div id="wrapper">
 		<section id="notifications">
-		       <p class="notice"><%= notice %></p>
-		       <p class="alert"><%= alert %></p>
+			<% unless notice.blank? %>
+				<p class="notice"><%= notice %></p>
+			<% end %>
+			<% unless alert.blank? %>
+				<p class="alert"><%= alert %></p>
+			<% end %>
 		</section>
 
 		<section id="maincontent">

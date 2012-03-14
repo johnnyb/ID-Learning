@@ -1,10 +1,10 @@
-<h1>Course: <%= @course.public_identifier %></h1>
+<div id="toolbox">
+	<% if @course.editable_by?(current_user) %>
+		<%= link_to "Edit", [:edit, @course] %>
+	<% end %>
+</div>
 
-<% if @course.editable_by?(current_user) %>
-	<%= link_to "Edit", [:edit, @course] %>
-<% end %>
-
-<h1><%= @course.name %></h1>
+<h1>Course: <%= @course.name %></h1>
 
 <h2>Class Description</h2>
 <div class="description">

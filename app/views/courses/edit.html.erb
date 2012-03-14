@@ -1,8 +1,16 @@
 <h1>Edit Course</h1>
 
-<p>
-	<%= link_to "View Course", @course %>
-</p>
+<div id="toolbox">
+	<p>
+		<%= link_to "View Course", @course %>
+	</p>
+	<p>
+		<% if @course.published? %>
+			<%= link_to "Unpublish", [:unpublish, @course], :method => :put %>
+		<% else %>
+			<%= link_to "Publish", [:publish, @course], :method => :put %>
+		<% end %>
+</div>
 
 <h2>Basic Information</h2>
 <%= render :partial => "form", :locals => { :course => @course } %>

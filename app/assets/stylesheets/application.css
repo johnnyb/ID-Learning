@@ -13,17 +13,33 @@
 */
 
 /* **** RESETS **** */
-h1 {
+h1, div, section, body, html, header, footer, h2, h3, h4, h5, p {
 	margin: 0px;
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding: 0px;
+	display: block;
+	bordeR: none;
 }
 
 /* **** BASIC STRUCTURE **** */
 
+p {
+	padding-bottom: 15px;
+}
+
 html {
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
+}
+
+h1 {
+	font-size: 30px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+h2 {
+	font-size: 20px;
+	padding-top: 20px;
 }
 
 body {
@@ -46,6 +62,11 @@ header {
 header h1 {
 }
 
+header h1 a {
+	color: inherit;
+	text-decoration: none;
+}
+
 header nav ul {
 	display: block;
 	border-top: 1px solid black;
@@ -53,6 +74,10 @@ header nav ul {
 	background-color: white;
 	padding: 0px;
 	margin: 0px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
 }
 
 header nav ul:after {
@@ -82,15 +107,40 @@ header nav ul li a:hover {
 	background-color: #aaaaaa;
 }
 
+#wrapper:before {
+	content: "";
+	display: block;
+	height: 1px;
+}
+
 #wrapper {
 	position: relative;
 	margin: 0px;
 	padding: 0px 30px 30px 30px;
 	border-left: 1px solid black;
 	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	background-color: #dddddd;
 
 }
 
+#notifications p.notice {
+	background-color: #ccffcc;
+	border: 1px solid #00ff00;
+}
+
+#notifications p.alert {
+	background-color: #ffcccc;
+	border: 1px solid #ff0000;
+}
+
+#notifications p {
+	border-radius: 5px;
+	padding: 8px;
+	margin-top: 10px;
+}
 
 #toolbox:before {
 	content: "Toolbox";
@@ -100,11 +150,16 @@ header nav ul li a:hover {
 }
 
 #toolbox {
+	border-radius: 10px;
 	position: absolute;
-	top: 0px;
+	top: 15px;
 	right: 50px;
 	width: 250px;
 	border: 1px solid black;	
 	padding: 10px;
+	background-color: #ccccaa;
 }
 
+.lecture-notes {
+	padding-top: 20px;
+}
