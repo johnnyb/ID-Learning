@@ -1,11 +1,11 @@
 <% courses = Course.for_lecturer(current_user).active %>
-<h1>My Courses</h1>
-
 <div id="toolbox">
 	<p>
 		<%= link_to "Create New Course", new_course_path %>
 	</p>
 </div>
+
+<h1>My Courses</h1>
 
 <% if courses.empty? %>
 	<p>

@@ -1,11 +1,12 @@
 <% courses = Course.published.name_order.to_a %>
-<h1>Available Courses</h1>
 
 <% if current_user && current_user.role_lecturer? %>
 	<div id="toolbox">
 		<%= link_to "My Courses", mine_courses_path, :class => "button" %>
 	</div>
 <% end %>
+
+<h1>Available Courses</h1>
 
 <% if courses.empty? %>
 	<p>

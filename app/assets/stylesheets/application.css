@@ -150,10 +150,14 @@ header nav ul li a:hover {
 }
 
 #toolbox {
+	float: right;
 	border-radius: 10px;
+	/*
 	position: absolute;
 	top: 15px;
 	right: 50px;
+	*/
+	margin-top: 15px;
 	width: 250px;
 	border: 1px solid black;	
 	padding: 10px;
