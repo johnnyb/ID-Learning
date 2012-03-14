@@ -3,6 +3,9 @@
 <h2>Lecture: <%= @lecture.public_identifier %></h2>
 
 <div id="toolbox">
+	<p>
+		<%= link_to "Return to Course", @course %>
+	</p>
 	<% if @lecture.editable_by?(current_user) %>
 		<p>
 			<%= link_to "Edit", [:edit, @course, @lecture] %>
