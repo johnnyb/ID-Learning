@@ -3,7 +3,7 @@ class LecturesController < ApplicationController
 
 	def create
 		@lecture = @course.lectures.build(params[:lecture])
-		@lecture.position = last_position(@course.lectures)
+		@lecture.position = last_position(@course.lectures) + 1
 		@lecture.save!
 		flash[:notice] = "Lecture successfully saved"
 		redirect_to [:edit, @course, @lecture]
