@@ -7,36 +7,36 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+		<h1>ID Learning System</h1>
 
-<header>
-	<h1>ID Learning System</h1>
+		<nav>
+			<ul>
+				<li><%= link_to "Courses", courses_path %></li>
+				<% if current_user %>
+					<li><%= link_to "Seminars", seminars_path %></li>
+					<li><%= link_to "My Account", account_path %></li>
+					<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+				<% else %>
+					<li><%= link_to "Register/Sign In", account_path %></li>
+				<% end %>
+			</ul>
+		</nav>
+	</header>
 
-	<nav>
-		<ul>
-			<li><%= link_to "Courses", courses_path %></li>
-			<% if current_user %>
-				<li><%= link_to "Seminars", seminars_path %></li>
-				<li><%= link_to "My Account", account_path %></li>
-				<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-			<% else %>
-				<li><%= link_to "Register/Sign In", account_path %></li>
-			<% end %>
-		</ul>
-	</nav>
-</header>
+	<div id="wrapper">
+		<section id="notifications">
+		       <p class="notice"><%= notice %></p>
+		       <p class="alert"><%= alert %></p>
+		</section>
 
-<section id="notifications">
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-</section>
+		<section id="maincontent">
+			<%= yield %>
+		</section>
 
-<section id="maincontent">
-	<%= yield %>
-</section>
+		<footer>
 
-<footer>
-
-</footer>
-
+		</footer>
+	</div>
 </body>
 </html>

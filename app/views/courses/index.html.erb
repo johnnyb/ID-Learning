@@ -2,7 +2,9 @@
 <h1>Available Courses</h1>
 
 <% if current_user && current_user.role_lecturer? %>
-	<%= link_to "My Courses", mine_courses_path, :class => "button" %>
+	<div id="toolbox">
+		<%= link_to "My Courses", mine_courses_path, :class => "button" %>
+	</div>
 <% end %>
 
 <% if courses.empty? %>

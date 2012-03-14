@@ -11,3 +11,97 @@
  *= require_self
  *= require_tree .
 */
+
+/* **** RESETS **** */
+h1 {
+	margin: 0px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+/* **** BASIC STRUCTURE **** */
+
+html {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+body {
+	border: none;
+	margin-top: 0px;
+	padding-top: 0px;
+	padding-left: 25px;
+	padding-right: 25px;
+	background-color: #cccccc;
+
+	font-family: sans-serif;	
+}
+
+
+header {
+	margin: 0px;
+	padding: 0px;
+}
+
+header h1 {
+}
+
+header nav ul {
+	border-top: 1px solid black;
+	border-bottom: 1px solid #cccccc;
+	background-color: white;
+	padding: 0px;
+	margin: 0px;
+}
+
+header nav ul:after {
+	content: "";
+	display: block;
+	clear: both;
+	visibility: none;
+}
+
+header nav ul li {
+	display: block;
+	float: left;
+	padding: 0px;
+	margin: 0px;
+}
+
+header nav ul li a {
+	display: block;
+	text-decoration: none;
+	padding: 10px;
+}
+header nav ul li a.selected {
+	background-color: #aaaaaa;
+}
+
+header nav ul li a:hover {
+	background-color: #aaaaaa;
+}
+
+#wrapper {
+	margin: 0px;
+	padding: 0px 30px 30px 30px;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+
+}
+
+#toolbox:before {
+	content: "Toolbox";
+	display: block;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+
+#toolbox {
+	position: absolute;
+	top: 140px;
+	right: 50px;
+	width: 250px;
+	border: 1px solid black;	
+	padding: 10px;
+}
+
