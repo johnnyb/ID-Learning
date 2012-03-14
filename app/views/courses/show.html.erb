@@ -1,6 +1,11 @@
 <div id="toolbox">
+	<p>
+		<%= link_to "Return to Course", @course %>
+	</p>
 	<% if @course.editable_by?(current_user) %>
-		<%= link_to "Edit", [:edit, @course] %>
+		<p>
+			<%= link_to "Edit", [:edit, @course] %>
+		</p>
 	<% end %>
 </div>
 
