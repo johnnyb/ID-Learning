@@ -47,6 +47,7 @@ header h1 {
 }
 
 header nav ul {
+	display: block;
 	border-top: 1px solid black;
 	border-bottom: 1px solid #cccccc;
 	background-color: white;
@@ -82,12 +83,14 @@ header nav ul li a:hover {
 }
 
 #wrapper {
+	position: relative;
 	margin: 0px;
 	padding: 0px 30px 30px 30px;
 	border-left: 1px solid black;
 	border-right: 1px solid black;
 
 }
+
 
 #toolbox:before {
 	content: "Toolbox";
@@ -98,7 +101,7 @@ header nav ul li a:hover {
 
 #toolbox {
 	position: absolute;
-	top: 140px;
+	top: 0px;
 	right: 50px;
 	width: 250px;
 	border: 1px solid black;	
