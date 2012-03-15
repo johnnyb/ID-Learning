@@ -14,6 +14,9 @@ Idlearning::Application.routes.draw do
 
 		resources :lectures do
 			resources :lecture_links
+			collection do
+				put :sort
+			end
 		end
 	end
 	resources :seminars do

@@ -22,6 +22,11 @@ class LecturesController < ApplicationController
 		redirect_to [:edit, @course]
 	end
 
+	def sort
+		sort_array_with_position(@course.lectures, params[:sortOrder])
+		render :nothing => true
+	end
+
 	private
 
 	def setup_lecture

@@ -3,11 +3,15 @@
 		<%= link_to "View Course", @course %>
 	</p>
 	<p>
+		<%= link_to "Add Lecture", new_course_lecture_path(@course), :class => "button" %>
+	</p>
+	<p>
 		<% if @course.published? %>
 			<%= link_to "Unpublish", [:unpublish, @course], :method => :put %>
 		<% else %>
 			<%= link_to "Publish", [:publish, @course], :method => :put %>
 		<% end %>
+	</p>
 </div>
 
 <h1>Edit Course</h1>
@@ -18,19 +22,17 @@
 
 <h2>Lectures</h2>
 <% lectures = @course.lectures.position_order %>
-<p>
-	<%= link_to "Add Lecture", new_course_lecture_path(@course), :class => "button" %>
-</p>
 <% if lectures.empty? %>
 	<p>
 		No lectures have been created.
 	</p>
 <% else %>
-	<ol>
+	<ul id="lecturelist">
 		<% lectures.each do |lec| %>
-			<li><%= link_to lec.name, [:edit, @course, lec] %></li>
+			<li id="lecture_<%= lec.id %>"><%= link_to lec.name, [:edit, @course, lec] %></li>
 		<% end %>
-	</ol>
+	</ul>
+	<%= sortable_element("lecturelist", sort_course_lectures_path(@course)) %>
 <% end %>
 
 <h2>Course Resources</h2>
