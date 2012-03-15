@@ -31,7 +31,10 @@
 			<ul id="lecture-links-list">
 				<% links.each do |lnk| %>
 					<li class="lecture_link" id="lecturelink_<%= lnk.id %>">
-						<%= render :partial => "lecture_links/form", :locals => { :lecture_link => lnk } %>
+						<%= link_to_function lnk.title, "$('#ll-content-#{lnk.id}').toggle()" %>
+						<div id="ll-content-<%= lnk.id %>" style="display: none;">
+							<%= render :partial => "lecture_links/form", :locals => { :lecture_link => lnk } %>
+						</div>
 					</li>
 				<% end %>
 			</ul>
