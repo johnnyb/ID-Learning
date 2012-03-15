@@ -13,7 +13,11 @@ Idlearning::Application.routes.draw do
 		end
 
 		resources :lectures do
-			resources :lecture_links
+			resources :lecture_links do
+				collection do
+					put :sort
+				end
+			end
 			collection do
 				put :sort
 			end

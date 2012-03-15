@@ -158,12 +158,40 @@ header nav ul li a:hover {
 	right: 50px;
 	*/
 	margin-top: 15px;
+	margin-bottom: 15px;
 	width: 250px;
 	border: 1px solid black;	
 	padding: 10px;
 	background-color: #ccccaa;
 }
 
+/* *** MISC STYLES *** */
+
 .lecture-notes {
 	padding-top: 20px;
+}
+
+textarea.small-editor {
+	height: 50px;
+}
+
+.lecture-link-form {
+	position: relative;
+}
+
+.lecture-link-form dl {
+}
+.lecture-link-form  input[type="submit"]{
+	position: absolute;
+	left: 400px;
+	top: 25px;	
+}
+
+.tabbed-panel {
+	clear: right;
+}
+
+textarea.widefield {
+	width: 80%;
+	height: 150px;
 }

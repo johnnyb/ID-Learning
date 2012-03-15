@@ -12,6 +12,9 @@
 			<%= link_to "Publish", [:publish, @course], :method => :put %>
 		<% end %>
 	</p>
+	<p>
+		<%= link_to "Delete Course", @course, :method => :delete, :confirm => "Are you sure you want to delete this course?" %>
+	</p>
 </div>
 
 <h1>Edit Course</h1>
@@ -34,17 +37,4 @@
 	</ul>
 	<%= sortable_element("lecturelist", sort_course_lectures_path(@course)) %>
 <% end %>
-
-<h2>Course Resources</h2>
-
-<h2>Tools</h2>
-
-<ul class="action-buttons">
-	<% if @course.published? %>
-		<li><%= link_to "Publish", [:publish, @course], :method => :put, :class => "button" %></li>
-	<% else %>
-		<li><%= link_to "Unpublish", [:unpublish, @course], :method => :put, :class => "button" %></li>
-	<% end %>
-	<li><%= link_to "Delete Course", @course, :method => :delete, :confirm => "Are you sure you want to delete this course?" %></li>
-</ul>
 

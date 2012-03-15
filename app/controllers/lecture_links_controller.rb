@@ -24,6 +24,8 @@ class LectureLinksController < ApplicationController
 	end
 
 	def sort
+		sort_array_with_position(@lecture.lecture_links, params[:sortOrder])
+		render :nothing => true
 	end
 
 	private
