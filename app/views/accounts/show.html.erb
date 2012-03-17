@@ -1,1 +1,23 @@
 <h1>Account</h1>
+
+<% if current_user.role_lecturer? %>
+	<h2>You are a <em>lecturer</em></h2>
+	<ul>
+		<li><%= link_to "My Courses", mine_courses_path %></li>
+	</ul>
+<% end %>
+
+<% if current_user.role_professor? %>
+	<h2>You are a <em>professor</em></h2>
+	<ul>
+		<li><%= link_to "My seminars", mine_seminars_path %></li>
+	</ul>
+<% end %>
+
+<% if current_user.role_student? %>
+	<h2>You are a <em>student</em></h2>
+	<ul>
+		<li><%= link_to "Enrolled seminars", enrolled_seminars_path %></li>
+		<li><%= link_to "View Courses", courses_path %></li>
+	</ul>
+<% end %>
