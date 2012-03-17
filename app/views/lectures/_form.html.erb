@@ -12,6 +12,12 @@
 
 		<dt>Lecture Notes</dt>
 		<dd><%= f.text_area :lecture_notes, :class => "widefield" %></dd>
+
+		<dt>How Many Quiz Questions? (optional)</dt>
+		<dd><%= f.text_field :number_quiz_questions %></dd>
+
+		<dt>How Many Correct Answers to Pass? (optional)</dt>
+		<dd><%= f.text_field :number_correct_passing %></dd>
 	</dl>
 
 	<%= submit_tag "Save" %>

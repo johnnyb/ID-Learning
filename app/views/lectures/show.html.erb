@@ -1,4 +1,19 @@
+<% 
+	q = @lecture.lecture_questions.first
+	has_quiz = !q.nil?
+	passed_quiz = current_user.nil? ? false : current_user.passed_lecture_quiz?(@lecture)
+%>
+
 <div id="toolbox">
+	<% if has_quiz %>
+		<p>
+			<% if passed_quiz %>
+				You have passed the quiz for this course
+			<% else %>
+				<%= link_to "Take Quiz", [:quiz, @lecture.course, @lecture] %>
+			<% end %>
+		</p>
+	<% end %>
 	<p>
 		<%= link_to "Return to Course", @course %>
 	</p>

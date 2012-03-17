@@ -1,0 +1,44 @@
+<%
+	questions = @lecture.all_valid_questions.shuffle 
+	questions_for_display = questions[0..(@lecture.number_quiz_questions_forced)]
+%>
+
+<h1>Course: <%= @course.name %></h1>
+
+<h2>Lecture: <%= @lecture.name %></h2>
+
+<h3>Quiz</h3>
+
+<% if current_user.nil? %>
+	<p>
+		You are not logged in.  You may take the quiz but the grade will not be recorded.
+	</p>
+<% end %>
+<p>
+	This quiz has <%= @lecture.number_quiz_questions_forced %> questions.  You must get <%= @lecture.number_correct_passing_forced %> correct to pass.
+</p>
+
+<%= form_tag [:grade, @course, @lecture], :method => :post do %>
+	<%= hidden_field_tag "quiz_lecture_question_ids", questions_for_display.map{|x| x.id}.join(",") %>
+	<ol>
+		<% questions_for_display.each do |q| %>
+			<li>
+				<div class="quiz-question">
+					<div class="question-text"><%= texthtml(q.question_text) %></div>
+					<ol>
+						<% q.answers.each do |ans_info| %>
+							<% atext = ans_info[0] %>
+							<% idx = ans_info[1] %>
+							<li>
+								<%= radio_button_tag "answer_#{q.id}", idx %>
+								<%= atext %>
+							</li>
+						<% end %>
+					</ol>
+				</div>
+			</li>
+		<% end %>
+	</ol>
+
+	<%= submit_tag "Grade Quiz" %>
+<% end %>

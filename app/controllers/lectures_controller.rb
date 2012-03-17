@@ -27,6 +27,30 @@ class LecturesController < ApplicationController
 		render :nothing => true
 	end
 
+	def grade
+		@active_lecture_questions = params[:quiz_lecture_question_ids].split(",").map{|x| @lecture.lecture_questions.find(x)}.compact
+		num_questions = @active_lecture_questions.size
+		@num_correct = 0
+		@active_lecture_questions.each do |q|
+			given_answer = params["answer_#{q.id}"].to_i
+			if given_answer == q.answer_number
+				@num_correct = @num_correct + 1
+			end
+		end
+
+		@passed = @num_correct >= @lecture.number_correct_passing_forced
+
+		unless current_user.nil?
+			@student_lecture_grade = StudentLectureGrade.create!(
+				:student_user => current_user,
+				:lecture => @lecture,
+				:number_questions => @lecture.number_quiz_questions_forced,
+				:number_answers_correct => @num_correct,
+				:passed => @passed
+			)
+		end
+	end
+
 	private
 
 	def setup_lecture

@@ -1,0 +1,27 @@
+<div id="toolbox">
+	<% if !@passed %>
+		<p>
+			<%= link_to "Take the quiz again", [:quiz, @course, @lecture] %>
+		</p>
+	<% end %>
+	<p>
+		<%= link_to "Return to Lecture", [@course, @lecture] %>
+	</p>
+	<p>
+		<%= link_to "Return to Course", [@course] %>
+	</p>
+</div>
+
+<h1>Course: <%= @course.name %></h1>
+<h2>Lecture: <%= @lecture.name %></h2>
+<h3>Quiz Grade</h3>
+
+<% if @passed %>
+	<p class="grade-passing">
+		You passed the quiz earning <%= @num_correct %> right out of <%= @lecture.number_quiz_questions_forced %> possible questions.
+	</p>
+<% else %>
+	<p class="grade-failing">
+		You did not pass the quiz.  You answered <%= @num_correct %> answers correctly out of <%= @lecture.number_quiz_questions_forced %>.
+	</p>
+<% end %>

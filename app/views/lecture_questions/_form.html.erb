@@ -1,0 +1,17 @@
+<%# PARAMETERS - lecture_question %>
+<%= form_for [lecture_question.lecture.course, lecture_question.lecture, lecture_question] do |f| %>
+	<dl>
+		<dt>Question</dt>
+		<dd><%= f.text_field :question_text %></dd>
+
+		<dt>Correct Answer (give the number)</dt>
+		<dd><%= f.text_field :answer_number %></dd>
+
+		<% 1.upto(8) do |qidx| %>
+			<dt>Answer #<%= qidx %></dt>
+			<dd><%= f.text_field "answer_text_#{qidx}" %></dd>
+		<% end %>
+	</dl>
+
+	<%= submit_tag "Save" %>
+<% end %>

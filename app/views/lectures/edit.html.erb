@@ -12,6 +12,7 @@
 	<ul>
 		<li><a href="#lecture-basic">Basic Information</a></li>
 		<li><a href="#lecture-links">Lecture Links</a></li>
+		<li><a href="#lecture-questions">Quiz Questions</a></li>
 	</ul>
 	<div id="lecture-basic">
 		<h2>Basic Information</h2>
@@ -46,6 +47,32 @@
 		<h3>New Link</h3>
 
 		<%= render :partial => "lecture_links/form", :locals => { :lecture_link => @lecture.lecture_links.build } %>
+	</div>
+	<div id="lecture-questions">
+		<h2>Quiz Questions</h2>
+		<% qs = @lecture.lecture_questions.oldest_first.to_a %>
+		<% if qs.empty? %>
+			<p>
+				No questions have been added
+			</p>
+		<% else %>
+			<ul id="lecture-questions-list">
+				<% qs.each do |q| %>
+					<li>
+						<%= link_to_function q.question_text, "$('#lq-content-#{q.id}').toggle()" %>
+						<div id="lq-content-<%= q.id %>" style="display: none;">
+							<%= render :partial => "lecture_questions/form", :locals => { :lecture_question => q } %>
+						</div>
+					</li>
+				<% end %>
+			</ul>
+		<% end %>
+
+		<hr />
+
+		<h3>New Question</h3>
+		
+		<%= render :partial => "lecture_questions/form", :locals => { :lecture_question => @lecture.lecture_questions.build } %>
 	</div>
 </div>
 <script type="text/javascript">

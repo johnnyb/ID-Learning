@@ -18,8 +18,16 @@ Idlearning::Application.routes.draw do
 					put :sort
 				end
 			end
+			resources :lecture_questions do
+			end
+
 			collection do
 				put :sort
+			end
+
+			member do
+				get :quiz
+				post :grade
 			end
 		end
 	end
