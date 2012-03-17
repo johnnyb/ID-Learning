@@ -38,5 +38,6 @@ Idlearning::Application.routes.draw do
 		end
 	end
 
+	match 'unauthorized', :to => 'home#unauthorized', :as => "unauthorized"
 	root :to => "home#index"
 end

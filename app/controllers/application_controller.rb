@@ -17,4 +17,18 @@ class ApplicationController < ActionController::Base
 			end
 		end
 	end
+
+	def lecturer_required
+		if current_user.nil? || (!current_user.role_lecturer?)
+			redirect_to unauthorized_path
+		end
+	end
+
+	def lecture_ownership_required
+		unless @lecture.nil?
+			unless @lecture.editable_by?(current_user)
+				redirect_to unauthorized_path
+			end
+		end
+	end
 end

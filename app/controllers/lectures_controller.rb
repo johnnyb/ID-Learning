@@ -1,5 +1,7 @@
 class LecturesController < ApplicationController
 	before_filter :setup_lecture
+	before_filter :lecturer_required, :only => [:create]
+	before_filter :lecture_ownership_required, :only => [:update, :destroy, :sort]
 
 	def create
 		@lecture = @course.lectures.build(params[:lecture])
@@ -57,4 +59,5 @@ class LecturesController < ApplicationController
 		@course = Course.find(params[:course_id]) unless params[:course_id].blank?
 		@lecture = Lecture.find(params[:id]) unless params[:id].blank?
 	end
+
 end

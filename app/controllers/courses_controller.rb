@@ -1,7 +1,8 @@
 class CoursesController < ApplicationController
 	before_filter :authenticate_user!, :only => [:new, :edit, :update, :destroy, :create]
 	before_filter :setup_course
-	before_filter :course_editable, :only => [:edit, :update, :destroy]
+	before_filter :lecturer_required, :only => [:new]
+	before_filter :course_ownership_required, :only => [:edit, :update, :destroy, :publish, :unpublish]
 
 	def update
 		@course.update_attributes!(params[:course])
@@ -48,10 +49,9 @@ class CoursesController < ApplicationController
 		end
 	end
 
-	def course_editable
+	def course_ownership_required
 		unless @course.editable_by?(current_user)
-			flash[:warning] = "You don't have permission to access that course"
-			redirect_to account_path
+			redirect_to unauthorized_path
 		end
 	end
 end

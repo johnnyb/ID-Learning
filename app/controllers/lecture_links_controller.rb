@@ -1,5 +1,6 @@
 class LectureLinksController < ApplicationController
 	before_filter :setup_lecture_link
+	before_filter :lecture_ownership_required
 
 	def create
 		@lecture_link = @lecture.lecture_links.build(params[:lecture_link])

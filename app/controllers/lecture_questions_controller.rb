@@ -1,5 +1,6 @@
 class LectureQuestionsController < ApplicationController
 	before_filter :setup_lecture_question
+	before_filter :lecture_ownership_required
 
 	def create
 		@lecture_question = @lecture.lecture_questions.create!(params[:lecture_question])
