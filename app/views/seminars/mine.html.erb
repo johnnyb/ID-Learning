@@ -1,0 +1,24 @@
+<div id="toolbox">
+	<p>
+		<%= link_to "Seminars I'm Running", mine_seminars_path %>
+	</p>
+	<p>
+		<%= link_to "Start a Seminar", new_seminar_path %>
+	</p>
+</div>
+
+<h1>My Seminars</h1>
+
+<% seminars = Seminar.active.for_professor(current_user) %>
+
+<% if seminars.empty? %>
+	<p>
+		You don't have any active seminars.
+	</p>
+<% else %>
+	<ul>
+		<% seminars.each do |seminar| %>
+			<li><%= link_to seminar.name, [:edit, seminar] %></li>
+		<% end %>
+	</ul>
+<% end %>

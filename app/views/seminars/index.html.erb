@@ -20,8 +20,13 @@
 
 <h1>Seminars Currently Enrolling</h1>
 
-<ul>
-	<% seminars.each do |seminar| %>
-		<li><%= link_to seminar.name, seminar %></li>
-	<% end %>
-</ul>
+<% if seminars.empty? %>
+	<p>
+		No publicly available seminars are currently accepting students.  Feel free to browse the <%= link_to "courses list", courses_path %> for independent study.
+	</p>
+	<ul>
+		<% seminars.each do |seminar| %>
+			<li><%= link_to seminar.name, seminar %></li>
+		<% end %>
+	</ul>
+<% end %>

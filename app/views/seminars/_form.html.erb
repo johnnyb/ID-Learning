@@ -1,0 +1,19 @@
+<%# PARAMETERS - seminar %>
+
+<%= form_for seminar do |f| %>
+	<dl>
+		<dt>Professor</dt>
+		<dd><%= f.object.professor_user.display_name %></dd>
+
+		<dt>Title</dt>
+		<dd><%= f.text_field :name %></dd>
+
+		<dt>Seminar Description</dt>
+		<dd><%= f.text_area :description %></dd>
+
+		<dt>Show in Public Listing</dt>
+		<dd><%= f.check_box :public %></dd>
+	</dl>
+
+	<%= submit_tag "Save" %>
+<% end %>

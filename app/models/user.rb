@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
 	def passed_lecture_quiz?(lec)
 		!StudentLectureGrade.for_student(self).for_lecture(lec).passed.empty?
 	end
+
+	def display_name
+		email
+	end
 end

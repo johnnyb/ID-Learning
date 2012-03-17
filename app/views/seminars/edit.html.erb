@@ -1,0 +1,12 @@
+<div id="toolbox">
+	<p>
+		<%= link_to "Show Seminar", @seminar %>
+	</p>
+	<p>
+		<%= link_to "Delete", @seminar, :method => :delete, :confirm => "Are you sure you want to delete this seminar?" %>
+	</p>
+</div>
+
+<h1>Edit Seminar</h1>
+
+<%= render :partial => "form", :locals => { :seminar => @seminar } %>
