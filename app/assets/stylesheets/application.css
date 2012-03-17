@@ -195,3 +195,17 @@ textarea.widefield {
 	width: 80%;
 	height: 150px;
 }
+
+.grade-passing {
+	margin-top: 10px;
+	padding: 5px;
+	background-color: #ccffcc;
+	border: 1px solid #00ff00;
+}
+
+.grade-failing {
+	margin-top: 10px;
+	padding: 5px;
+	background-color: #ffcccc;
+	border: 1px solid #ff0000;
+}
