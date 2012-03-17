@@ -1,0 +1,27 @@
+<%
+	seminars = Seminar.public.enrolling.to_a
+%>
+<div id="toolbox">
+	<% if current_user.role_student? %>
+		<p>
+			<%= link_to "Enrolled Seminars", enrolled_seminars_path %>
+		</p>
+	<% end %>
+
+	<% if current_user.role_professor? %>
+		<p>
+			<%= link_to "Seminars I'm Running", mine_seminars_path %>
+		</p>
+		<p>
+			<%= link_to "Start a Seminar", new_seminar_path %>
+		</p>
+	<% end %>
+</div>
+
+<h1>Seminars Currently Enrolling</h1>
+
+<ul>
+	<% seminars.each do |seminar| %>
+		<li><%= link_to seminar.name, seminar %></li>
+	<% end %>
+</ul>
