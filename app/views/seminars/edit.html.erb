@@ -3,6 +3,30 @@
 		<%= link_to "Show Seminar", @seminar %>
 	</p>
 	<p>
+		<%= link_to "Manage Class", [:class_edit, @seminar] %>
+	</p>
+	<p>
+		<%= link_to "Manage Lectures", [:lectures_edit, @seminar] %>
+	</p>
+	<% if @seminar.published? %>
+		<p>
+			<%= link_to "Unpublish", [:unpublish, @seminar], :method => :put %>
+		</p>
+		<% if @seminar.enrollment_closed? %>
+			<p>
+				<%= link_to "Re-open Enrollment", [:enrollment_open, @seminar], :method => :put %>
+			</p>
+		<% else %>
+			<p>
+				<%= link_to "Close Enrollment", [:enrollment_close, @seminar], :method => :put %>
+			</p>
+		<% end %>
+	<% else %>
+		<p>
+			<%= link_to "Publish", [:publish, @seminar], :method => :put %>
+		</p>
+	<% end %>
+	<p>
 		<%= link_to "Delete", @seminar, :method => :delete, :confirm => "Are you sure you want to delete this seminar?" %>
 	</p>
 </div>

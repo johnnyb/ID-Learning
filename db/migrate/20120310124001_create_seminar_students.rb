@@ -3,9 +3,10 @@ class CreateSeminarStudents < ActiveRecord::Migration
     create_table :seminar_students do |t|
       t.integer :seminar_id
       t.integer :student_user_id
-      t.integer :student_confirmed, :boolean, :default => false
-      t.integer :professor_confirmed, :boolean, :default => false
-      t.integer :confirmed, :boolean, :default => false
+      t.boolean :student_confirmed, :default => false
+      t.boolean :professor_confirmed, :default => false
+      t.boolean :confirmed, :default => false
+      t.boolean :rejected, :default => false
       t.timestamps
     end
   end

@@ -36,6 +36,20 @@ Idlearning::Application.routes.draw do
 			get :mine
 			get :enrolled 
 		end
+
+		member do
+			get :class_edit
+			get :lectures_edit
+			put :publish
+			put :unpublish
+			put :enrollment_open
+			put :enrollment_close
+			put :enrollment_accept
+			put :enrollment_reject
+			put :enroll
+		end
+
+		resources :enrollments
 	end
 
 	match 'unauthorized', :to => 'home#unauthorized', :as => "unauthorized"
